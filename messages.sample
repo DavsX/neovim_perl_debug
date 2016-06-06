@@ -1,0 +1,80 @@
+breakpoint: 
+b /tmp/test.pl:14
+b /tmp/lib/MyModule.pm:15
+
+startup ===================
+
+Loading DB routines from perl5db.pl version 1.32
+Editor support available.
+Enter h or `h h' for help, or `man perldebug' for more help.
+main::(/tmp/test.pl:9): say "Enter something:";
+  DB<1>
+
+after 'b 2' ===============
+b 2
+Line 2 not breakable.
+  DB<2>
+
+after 'b 6' ===============
+b 6
+  DB<3>
+
+after 'L'   ===============
+L
+/tmp/test.pl:
+ 6:     use Carp;
+    break if (1)
+      DB<3>
+
+new=====================================================
+
+startup ===================
+
+Loading DB routines from perl5db.pl version 1.32
+Editor support available.
+Enter h or `h h' for help, or `man perldebug' for more help.
+main::(/tmp/test.pl:9): say "Enter something:";
+  DB<1>
+
+after 'c' =================
+c
+Enter something:
+
+after 'davs' ==============
+davs
+You entered: davs
+Debugged program terminated.  Use q to quit or R to restart,
+  use o inhibit_exit to avoid stopping after program termination,
+  h q, h R or h o to get additional info.
+  DB<1>
+
+
+
+
+new=====================================================
+
+startup ===================
+
+Loading DB routines from perl5db.pl version 1.32
+Editor support available.
+Enter h or `h h' for help, or `man perldebug' for more help.
+main::(/tmp/test.pl:9): say "Enter something:";
+  DB<1>
+
+after 'b 10' ==============
+b 10
+  DB<2>
+
+after 'c' =================
+c
+Enter something:
+main::(/tmp/test.pl:10):        my $x = <STDIN>;
+  DB<2>
+
+after 's' =================
+s
+
+after 'cs' ================
+cs
+main::(/tmp/test.pl:11):        chomp $x;
+  DB<2>
